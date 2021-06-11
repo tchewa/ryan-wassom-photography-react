@@ -1,26 +1,50 @@
 import React from "react"
 import styled from "@emotion/styled"
-import Logo from "../images/ryanwassomphotoblack.png"
+import Logo from '../images/ryanwassomphotoblack.png'
+import {colors} from '../utils/global'
+
 
 const Navigation = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px 0;
+  height: 120px;
 
   a {
     margin: 0 30px;
-    font-family: 'Julius Sans One', sans-serif;
     font-size: 25px;
     text-decoration: none;
+    color: ${colors.black};
+
+    &:hover {
+      span {
+        &:after {
+          width: 100%;
+          transition: .2s;
+        }
+      }
+    }
 
     &:visited {
-      color: black;
+      color: ${colors.black};
+    }
+
+    span {
+      &:after {
+        content: '';
+        max-width: 100px;
+        margin: 0 auto;
+        width: 0;
+        height: 2px;
+        background-color: ${colors.black};
+        display: block;
+        transition: .2s ease-out;
+      }
     }
   }
 
   .logo {
-    max-width: 300px;
+    max-width: 250px;
     display: inline;
 
     img {
@@ -33,11 +57,11 @@ const NavigationContainer = () => {
   return (
     <>
       <Navigation>
-        <a href="/gallery">Gallery</a>
+        <a href="/gallery"><span>Gallery</span></a>
         <a href="/" className="logo">
           <img src={Logo} alt="logo"/>
         </a>
-        <a href="/about">About</a>
+        <a href="/about"><span>About</span></a>
       </Navigation>
     </>
   )
